@@ -1,5 +1,6 @@
 package com.medstory.service;
 
+import com.medstory.persistence.model.Doctor;
 import com.medstory.persistence.model.History;
 import com.medstory.persistence.model.Patient;
 import com.medstory.persistence.repository.HistoryRepository;
@@ -23,5 +24,11 @@ public class HistoryService {
 
     }
 
+    public List<History> findByPatient(Patient patient) {
+        return historyRepository.findByPatientCc(patient.getCc());
+    }
 
+    public List<History> findByDoctor(Doctor doctor) {
+        return historyRepository.findByDoctorProfessionalCard(doctor.getProfessionalCard());
+    }
 }
